@@ -1,0 +1,43 @@
+<!-- src/app/components/signup/signup.component.html -->
+<div class="signup-container">
+    <h2>Sign Up</h2>
+    <form *ngIf="step === 1" (ngSubmit)="onContinue()">
+      <label for="name">Name</label>
+      <input type="text" id="name" [(ngModel)]="user.name" name="name" required>
+  
+      <label for="emailOrPhone">Email or Phone Number</label>
+      <input type="text" id="emailOrPhone" [(ngModel)]="user.email" name="emailOrPhone" required>
+  
+      <label for="password">Password</label>
+      <input type="password" id="password" [(ngModel)]="user.password" name="password" required>
+  
+      <button type="submit">Continue</button>
+    </form>
+  
+    <form *ngIf="step === 2" (ngSubmit)="onContinue()">
+      <label for="organization">Organization</label>
+      <select id="organization" [(ngModel)]="user.organization" name="organization" required>
+        <option *ngFor="let org of organizations">{{ org }}</option>
+      </select>
+  
+      <label for="designation">Designation</label>
+      <select id="designation" [(ngModel)]="user.designation" name="designation" required>
+        <option *ngFor="let des of designations">{{ des }}</option>
+      </select>
+  
+      <label for="birthDate">Birth Date</label>
+      <input type="date" id="birthDate" [(ngModel)]="user.birthDate" name="birthDate" required>
+  
+      <label for="city">City</label>
+      <input type="text" id="city" [(ngModel)]="user.city" name="city" required>
+  
+      <label for="pincode">Pincode</label>
+      <input type="text" id="pincode" [(ngModel)]="user.pincode" name="pincode" required pattern="[0-9]{6}">
+  
+      <button type="submit">Sign Up</button>
+      <button type="button" (click)="onBack()">Back</button>
+    </form>
+  
+    <p *ngIf="errorMessage">{{ errorMessage }}</p>
+  </div>
+  
